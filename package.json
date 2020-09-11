@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./apiServer/apiServer.js",
+    "start": "npm run build && node ./apiServer/apiServer.js",
+    "build": "webpack",
     "build:dev": "webpack -w",
     "build:prod": "NODE_ENV=production webpack"
   },

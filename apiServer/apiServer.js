@@ -17,6 +17,26 @@ const validateNumber = (numb) => {
     }
 }
 
+const validate = (numbers) => {
+    if (!numbers) {
+        return "Two arguments 'number' are required";
+    }
+
+    const number1 = number[0];
+    const number2 = number[1];
+
+    let error = validateNumber(number1);
+    if (typeof error === 'string') {
+        return error;
+    }
+
+    error = validateNumber(number2);
+    if (typeof error === 'string') {
+        return error;
+    }
+}
+
+
 app.use(function(req, res, next) {
     res.setHeader('Content-Type', 'application/json');
     if(req.headers.origin && ALLOWED_ORIGINS.indexOf(new URL(req.headers.origin).hostname) > -1) {
@@ -35,16 +55,7 @@ app.get('/', (req, res) => {
 
 // Example: 'GET /sum?number=2&number=6' will return {result: 8} for the 'number' query parameters
 app.get('/sum', (req, res) => {
-    const number1 = req.query.number && req.query.number[0];
-    const number2 = req.query.number && req.query.number[1];
-
-    let error = validateNumber(number1);
-    if (typeof error === 'string') {
-        res.send({error});
-        return;
-    }
-
-    error = validateNumber(number2);
+    const error = validate(req.query.number);
     if (typeof error === 'string') {
         res.send({error});
         return;
@@ -55,16 +66,7 @@ app.get('/sum', (req, res) => {
 
 // Example: 'GET /sub?number=5&number=3' will return {result: 2} for the 'number' query parameters
 app.get('/sub', (req, res) => {
-    const number1 = req.query.number && req.query.number[0];
-    const number2 = req.query.number && req.query.number[1];
-
-    let error = validateNumber(number1);
-    if (typeof error === 'string') {
-        res.send({error});
-        return;
-    }
-
-    error = validateNumber(number2);
+    const error = validate(req.query.number);
     if (typeof error === 'string') {
         res.send({error});
         return;
@@ -75,16 +77,7 @@ app.get('/sub', (req, res) => {
 
 // Example: 'GET /mult?number=5&number=3' will return {result: 15} for the 'number' query parameters
 app.get('/mult', (req, res) => {
-    const number1 = req.query.number && req.query.number[0];
-    const number2 = req.query.number && req.query.number[1];
-
-    let error = validateNumber(number1);
-    if (typeof error === 'string') {
-        res.send({error});
-        return;
-    }
-
-    error = validateNumber(number2);
+    const error = validate(req.query.number);
     if (typeof error === 'string') {
         res.send({error});
         return;
@@ -95,16 +88,7 @@ app.get('/mult', (req, res) => {
 
 // Example: 'GET /div?number=6&number=3' will return {result: 2} for the 'number' query parameters
 app.get('/div', (req, res) => {
-    const number1 = req.query.number && req.query.number[0];
-    const number2 = req.query.number && req.query.number[1];
-
-    let error = validateNumber(number1);
-    if (typeof error === 'string') {
-        res.send({error});
-        return;
-    }
-
-    error = validateNumber(number2);
+    const error = validate(req.query.number);
     if (typeof error === 'string') {
         res.send({error});
         return;

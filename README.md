@@ -8,9 +8,13 @@ To install dependencies:
 
 To start the applications please run these commands in two different terminals:
 ```js
-    npm run start
-    npm run start:api
+    npm start
 ```
 
 Open the app in the browser:
     http://localhost:3000
+
+To run hot reload run:
+```js
+    npm run build:dev
+```
