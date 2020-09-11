@@ -4,7 +4,7 @@ const {sum, subtraction, multiplication, division} = require('./operations');
 
 const app = express();
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 const ALLOWED_ORIGINS = ['localhost'];
 

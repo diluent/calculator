@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --hot --config webpack.config.js --watch --colors --content-base dist/",
-    "start:api": "node ./apiServer/apiServer.js",
-    "build": "webpack",
+    "start": "node ./apiServer/apiServer.js",
+    "build:dev": "webpack -w",
     "build:prod": "NODE_ENV=production webpack"
   },
   "author": "",
