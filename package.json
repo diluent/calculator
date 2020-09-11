@@ -1,0 +1,34 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --hot --config webpack.config.js --watch --colors --content-base dist/",
+    "start:api": "node ./apiServer/apiServer.js",
+    "build": "webpack",
+    "build:prod": "NODE_ENV=production webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.3",
+    "big.js": "^5.2.2",
+    "express": "^4.17.1",
+    "install": "^0.13.0",
+    "npm": "^6.14.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.2.0",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^4.4.1",
+    "ts-loader": "^8.0.3",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
