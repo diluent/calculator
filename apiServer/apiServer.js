@@ -8,13 +8,6 @@ const port = process.env.PORT || 3001;
 
 const ALLOWED_ORIGINS = ['localhost'];
 
-app.use(function(req, res, next) {
-    res.setHeader('Content-Type', 'application/json');
-    if(req.headers.origin && ALLOWED_ORIGINS.indexOf(new URL(req.headers.origin).hostname) > -1) {
-        res.header('Access-Control-Allow-Origin', req.headers.origin);
-    }
-    next();
-});
 
 const validateNumber = (numb) => {
     const result = !isNaN(parseFloat(numb)) && !isNaN(numb - 0);
@@ -23,6 +16,22 @@ const validateNumber = (numb) => {
         return 'The number string is not like a number';
     }
 }
+
+app.use(function(req, res, next) {
+    res.setHeader('Content-Type', 'application/json');
+    if(req.headers.origin && ALLOWED_ORIGINS.indexOf(new URL(req.headers.origin).hostname) > -1) {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+    }
+    next();
+});
+
+app.use('/assets', express.static(path.resolve('dist')));
+
+app.get('/', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile(path.resolve('dist/index.html'));
+});
+
 
 // Example: 'GET /sum?number=2&number=6' will return {result: 8} for the 'number' query parameters
 app.get('/sum', (req, res) => {
@@ -103,10 +112,5 @@ app.get('/div', (req, res) => {
 
     res.send(division(number1, number2));
 });
-
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve('dist/index.html'));
-});
-
 
 app.listen(port, () => console.log(`Image server running on port ${port}`));

@@ -17,7 +17,8 @@ module.exports = (options) => {
     mode: process.env.NODE_ENV,
     output: {
       path: dest,
-      filename: 'bundle.[hash].js'
+      filename: 'bundle.[hash].js',
+      publicPath: '/assets'
     },
     plugins: [
       new HtmlWebpackPlugin({

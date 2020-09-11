@@ -1,8 +1,5 @@
-const BASE_URL = 'http://localhost:3001'; // TODO: extract to env 
-
 const resource = (path: string) => {
-    const url = `${BASE_URL}/${path}`;
-    return fetch(url, {
+    return fetch(path, {
         mode: 'cors',
     })
     .then((res) => res.json())
