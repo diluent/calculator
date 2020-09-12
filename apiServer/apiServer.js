@@ -55,7 +55,6 @@ app.get('/', (req, res) => {
 
 // Example: 'GET /sum?number=2&number=6' will return {result: 8} for the 'number' query parameters
 app.get('/sum', (req, res) => {
-    console.log('error req.query', req.query)
     const error = validate(req.query.number);
 
     if (typeof error === 'string') {
