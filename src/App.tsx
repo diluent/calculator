@@ -29,7 +29,7 @@ export default class App extends Component<{}, IState> {
 
   eventListener = (event: KeyboardEvent) => this.onChange(event.key);
 
-  handleOp = async (operation: TOperation, naumber1: number, naumber2: number) => {
+  handleOp = async (operation: TOperation, naumber1: number, naumber2: number, newOp?: TOperation) => {
     let result;
 
     switch (operation) {
@@ -51,7 +51,7 @@ export default class App extends Component<{}, IState> {
       return;
     }
 
-    this.setState({result: result.result, acc: '', op: null, error: null});
+    this.setState({result: result.result, acc: '', op: newOp, error: null});
   }
 
   onChange = (value: string) => {
@@ -76,7 +76,7 @@ export default class App extends Component<{}, IState> {
 
       case new RegExp(/[\*\+/-]/).test(value):
         if (this.state.acc && this.state.op && this.state.result) {
-          this.handleOp(this.state.op, this.state.result, Number(this.state.acc));
+          this.handleOp(this.state.op, this.state.result, Number(this.state.acc), value as TOperation);
         } else {
           this.setState({op: value as TOperation, result: this.state.result || Number(this.state.acc), acc: ''});
         }

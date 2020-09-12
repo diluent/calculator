@@ -22,8 +22,8 @@ const validate = (numbers) => {
         return "Two arguments 'number' are required";
     }
 
-    const number1 = number[0];
-    const number2 = number[1];
+    const number1 = numbers[0];
+    const number2 = numbers[1];
 
     let error = validateNumber(number1);
     if (typeof error === 'string') {
@@ -55,11 +55,16 @@ app.get('/', (req, res) => {
 
 // Example: 'GET /sum?number=2&number=6' will return {result: 8} for the 'number' query parameters
 app.get('/sum', (req, res) => {
+    console.log('error req.query', req.query)
     const error = validate(req.query.number);
+
     if (typeof error === 'string') {
         res.send({error});
         return;
     }
+
+    const number1 = req.query.number[0];
+    const number2 = req.query.number[1];
 
     res.send(sum(number1, number2));
 });
@@ -72,6 +77,9 @@ app.get('/sub', (req, res) => {
         return;
     }
 
+    const number1 = req.query.number[0];
+    const number2 = req.query.number[1];
+
     res.send(subtraction(number1, number2));
 });
 
@@ -83,6 +91,9 @@ app.get('/mult', (req, res) => {
         return;
     }
 
+    const number1 = req.query.number[0];
+    const number2 = req.query.number[1];
+
     res.send(multiplication(number1, number2));
 });
 
@@ -93,6 +104,9 @@ app.get('/div', (req, res) => {
         res.send({error});
         return;
     }
+
+    const number1 = req.query.number[0];
+    const number2 = req.query.number[1];
 
     res.send(division(number1, number2));
 });

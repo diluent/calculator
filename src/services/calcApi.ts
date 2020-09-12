@@ -7,7 +7,7 @@ const resource = (path: string) => {
 }
 
 export const sum = async (number1: number, number2: number) => {
-    return resource(`sub/?number=${encodeURIComponent(number1)}&number=${encodeURIComponent(number2)}`);
+    return resource(`sum/?number=${encodeURIComponent(number1)}&number=${encodeURIComponent(number2)}`);
 };
 
 export const sub = async (number1: number, number2: number) => {
