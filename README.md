@@ -1,12 +1,12 @@
 Instructions:
 ======
 
-To install dependencies:
+Install dependencies:
 ```js
     npm i
 ```
 
-To start the applications please run these commands in two different terminals:
+Start the application:
 ```js
     npm start
 ```
@@ -14,7 +14,7 @@ To start the applications please run these commands in two different terminals:
 Open the app in the browser:
     http://localhost:3000
 
-To run hot reload run:
+For dev mode:
 ```js
     npm run build:dev
 ```
